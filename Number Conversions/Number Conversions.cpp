@@ -4,7 +4,7 @@
 #include <cmath>
 using namespace std;
 
-void covert_to_binary(int n) {
+string covert_to_binary(int n) {
 	if (n <= 0) {
 		return;
 	}
@@ -12,6 +12,7 @@ void covert_to_binary(int n) {
 		int i = 0;
 		int count = 0;
 		vector<int> arr;
+		string result = "";
 		while (n != 0) {
 			i = n % 2;
 			n = n / 2;
@@ -19,11 +20,12 @@ void covert_to_binary(int n) {
 			count++;
 		}
 		for (int p = count - 1; p >= 0; p--) {
-			cout << arr[p];
+			result += to_string(arr[p]);
 		}
+		return result;
 	}
 }
-void covert_to_octal(int n) {
+string covert_to_octal(int n) {
 	if (n <= 0) {
 		return;
 	}
@@ -31,6 +33,7 @@ void covert_to_octal(int n) {
 		int i = 0;
 		int count = 0;
 		vector<int> arr;
+		string result = "";
 		while (n != 0) {
 			i = n % 8;
 			n = n / 8;
@@ -38,11 +41,12 @@ void covert_to_octal(int n) {
 			count++;
 		}
 		for (int p = count - 1; p >= 0; p--) {
-			cout << arr[p];
+			result += to_string(arr[p]);
 		}
+		return result;
 	}
 }
-void convertbinary_to_decimal(int n) {
+int convertbinary_to_decimal(int n) {
 	string a = to_string(n);
 	int len = a.length();
 	int sum = 0;
@@ -51,11 +55,11 @@ void convertbinary_to_decimal(int n) {
 		sum += (a[i] - '0') * pow(2, count);
 		count++;
 	}
-	cout << sum;
+	return sum;
 
 
 }
-void convertoctal_to_decimal(int n) {
+int convertoctal_to_decimal(int n) {
 	string a = to_string(n);
 	int len = a.length();
 	int sum = 0;
@@ -64,7 +68,7 @@ void convertoctal_to_decimal(int n) {
 		sum += (a[i] - '0') * pow(8, count);
 		count++;
 	}
-	cout << sum;
+	return sum;
 
 
 }
