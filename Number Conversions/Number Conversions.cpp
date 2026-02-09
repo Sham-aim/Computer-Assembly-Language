@@ -6,7 +6,7 @@ using namespace std;
 
 string covert_to_binary(int n) {
 	if (n <= 0) {
-		return;
+		return"0";
 	}
 	else {
 		int i = 0;
@@ -16,27 +16,6 @@ string covert_to_binary(int n) {
 		while (n != 0) {
 			i = n % 2;
 			n = n / 2;
-			arr.push_back(i);
-			count++;
-		}
-		for (int p = count - 1; p >= 0; p--) {
-			result += to_string(arr[p]);
-		}
-		return result;
-	}
-}
-string covert_to_octal(int n) {
-	if (n <= 0) {
-		return;
-	}
-	else {
-		int i = 0;
-		int count = 0;
-		vector<int> arr;
-		string result = "";
-		while (n != 0) {
-			i = n % 8;
-			n = n / 8;
 			arr.push_back(i);
 			count++;
 		}
@@ -56,31 +35,16 @@ int convertbinary_to_decimal(int n) {
 		count++;
 	}
 	return sum;
-
-
 }
-int convertoctal_to_decimal(int n) {
-	string a = to_string(n);
-	int len = a.length();
-	int sum = 0;
-	int count = 0;
-	for (int i = len - 1; i >= 0; i--) {
-		sum += (a[i] - '0') * pow(8, count);
-		count++;
-	}
-	return sum;
-
-
-}
-
-void convert_to_hexadecimal(int n) {
+string convert_to_hexadecimal(int n) {
 	if (n <= 0) {
-		return;
+		return "0";
 	}
 	else {
 		int i = 0;
 		int count = 0;
 		vector<int> arr;
+		string result = "";
 		while (n != 0) {
 			i = n % 16;
 			n = n / 16;
@@ -90,30 +54,32 @@ void convert_to_hexadecimal(int n) {
 		for (int p = count - 1; p >= 0; p--) {
 			switch (arr[p]) {
 			case 10:
-				cout << "A";
+				result += "A"; 
 				break;
 			case 11:
-				cout << "B";
+				result += "B";
 				break;
 			case 12:
-				cout << "C";
+				result += "C"; 
 				break;
 			case 13:
-				cout << "D";
+				result += "D"; 
 				break;
 			case 14:
-				cout << "E";
+				result += "E"; 
 				break;
 			case 15:
-				cout << "F";
+				result += "F"; 
 				break;
 			default:
-				cout << arr[p];
+				result += to_string(arr[p]);
 			}
 		}
+
+		return result;
 	}
 }
-void converthexadecimal_to_decimal(string a) {
+int converthexadecimal_to_decimal(string a) {
 	int len = a.length();
 	int sum = 0;
 	int count = 0;
@@ -148,10 +114,25 @@ void converthexadecimal_to_decimal(string a) {
 			count++;
 		}
 	}
-	cout << sum;
+	return sum;
 
 }
+string converthexatobinary(string b) {
+	int dec = converthexadecimal_to_decimal(b);
+	string final = covert_to_binary(dec);
+	return final;
+
+}
+
+string convertbinarytohexa(int b) {
+	int dec = convertbinary_to_decimal(b);
+	string result=convert_to_hexadecimal(dec);
+	return result;
+	
+}
+
 int main() {
-	convert_to_hexadecimal(8);
-	cout << endl;
+	
+	convertbinarytohexa(100001);
+
 }
